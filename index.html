@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Guide Assistant</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb', // Blue-600
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 transition-colors duration-300 bg-white/90 backdrop-blur-md shadow-sm dark:bg-gray-800/90 dark:shadow-gray-900/50" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check-to-slot text-primary text-xl"></i>
+                    <span class="font-bold text-xl tracking-tight hidden sm:block">Election Guide</span>
+                </div>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#hero" class="nav-link hover:text-primary transition-colors text-sm font-medium" data-translate="navHome">Home</a>
+                    <a href="#eligibility" class="nav-link hover:text-primary transition-colors text-sm font-medium" data-translate="navEligibility">Eligibility</a>
+                    <a href="#registration" class="nav-link hover:text-primary transition-colors text-sm font-medium" data-translate="navRegistration">Registration</a>
+                    <a href="#voting-process" class="nav-link hover:text-primary transition-colors text-sm font-medium" data-translate="navVoting">Voting Process</a>
+                    <a href="#polling" class="nav-link hover:text-primary transition-colors text-sm font-medium" data-translate="navPolling">Polling Station</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select id="lang-toggle" class="bg-transparent border border-gray-300 dark:border-gray-600 rounded-md text-sm py-1 px-2 focus:ring-primary focus:border-primary dark:bg-gray-700">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी (Hindi)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                    </select>
+                    <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-full transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-lg"></i>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" id="mobile-menu-btn">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (hidden by default) -->
+        <div class="md:hidden hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+                <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+                <a href="#eligibility" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Eligibility</a>
+                <a href="#registration" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Registration</a>
+                <a href="#voting-process" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Voting Process</a>
+                <a href="#polling" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Polling Station</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-20 lg:py-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6" data-translate="heroTitle">Election Guide Assistant</h1>
+                <p class="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10" data-translate="heroSubtitle">Learn how elections work, check eligibility, and vote confidently.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button onclick="scrollToSection('eligibility')" class="bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105" data-translate="btnCheckEligibility">Check Eligibility</button>
+                    <button onclick="scrollToSection('voting-process')" class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold py-3 px-8 rounded-full shadow-md transition-transform hover:scale-105" data-translate="btnExplore">Explore Voting Process</button>
+                </div>
+            </div>
+            <!-- Background Decoration -->
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full max-w-7xl -z-10 opacity-30 dark:opacity-10 pointer-events-none">
+                <div class="absolute top-20 left-10 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+                <div class="absolute top-20 right-10 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+                <div class="absolute -bottom-8 left-1/2 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+            </div>
+        </section>
+
+        <!-- Why Voting Matters Section -->
+        <section id="why-vote" class="py-16 bg-white dark:bg-gray-800 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-10" data-translate="whyVoteTitle">Why Voting Matters</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl bg-blue-50 dark:bg-gray-700 border border-blue-100 dark:border-gray-600 shadow-sm transition-transform hover:-translate-y-1">
+                        <i class="fa-solid fa-landmark text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Strengthens Democracy</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">Your vote is the building block of a robust democratic system, ensuring leaders are accountable.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-blue-50 dark:bg-gray-700 border border-blue-100 dark:border-gray-600 shadow-sm transition-transform hover:-translate-y-1">
+                        <i class="fa-solid fa-bullhorn text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Your Voice Matters</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">Every single vote counts. It's your direct way to influence the decisions that affect your daily life.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-blue-50 dark:bg-gray-700 border border-blue-100 dark:border-gray-600 shadow-sm transition-transform hover:-translate-y-1">
+                        <i class="fa-solid fa-chart-line text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Impacts Policies</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">Voting decides the direction of education, healthcare, infrastructure, and national security.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Eligibility Section -->
+        <section id="eligibility" class="py-16 transition-colors scroll-mt-16">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 transition-all duration-300" id="eligibility-card">
+                    <h2 class="text-3xl font-bold mb-6 text-center" data-translate="eligibilityTitle">Check Your Eligibility</h2>
+                    <p class="text-center text-gray-600 dark:text-gray-400 mb-8">Find out if you are eligible to vote and what to do next.</p>
+                    
+                    <div class="flex flex-col items-center">
+                        <label for="age-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Enter your age:</label>
+                        <div class="flex w-full max-w-xs gap-2">
+                            <input type="number" id="age-input" class="flex-1 rounded-lg border-gray-300 border px-4 py-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" min="0" max="120" placeholder="e.g. 18">
+                            <button id="check-age-btn" class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Check</button>
+                        </div>
+                    </div>
+
+                    <!-- Result Area -->
+                    <div id="eligibility-result" class="mt-8 hidden text-center p-6 rounded-2xl">
+                        <div id="result-icon" class="text-5xl mb-4"></div>
+                        <h3 id="result-title" class="text-2xl font-bold mb-2"></h3>
+                        <p id="result-desc" class="text-gray-600 dark:text-gray-300 mb-6"></p>
+                        <div id="result-actions" class="flex justify-center gap-4">
+                            <!-- Buttons injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Guide -->
+        <section id="registration" class="py-16 bg-white dark:bg-gray-800 transition-colors scroll-mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-10 text-center">Registration Guide</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4">How to Register Online</h3>
+                        <ol class="space-y-4 text-gray-700 dark:text-gray-300">
+                            <li class="flex gap-3 items-start">
+                                <span class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                                <span>Visit the official National Voters' Services Portal (NVSP).</span>
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <span class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                                <span>Click on "Fill Form 6" (For First Time Voters).</span>
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <span class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                                <span>Enter your details and upload the required documents.</span>
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <span class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                                <span>Submit and note down your Reference ID to track status.</span>
+                            </li>
+                        </ol>
+                        
+                        <a href="https://voters.eci.gov.in/" target="_blank" class="inline-flex items-center gap-2 mt-8 bg-gray-900 dark:bg-gray-100 dark:text-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                            <span>Go to Official Registration Website</span>
+                            <i class="fa-solid fa-external-link-alt text-sm"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-3xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-file-contract text-primary"></i> Required Documents</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 bg-white dark:bg-gray-800 p-3 rounded-xl border border-gray-100 dark:border-gray-600">
+                                <i class="fa-solid fa-image text-gray-400"></i>
+                                <span>Recent Passport Size Photograph</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white dark:bg-gray-800 p-3 rounded-xl border border-gray-100 dark:border-gray-600">
+                                <i class="fa-solid fa-address-card text-gray-400"></i>
+                                <div>
+                                    <span class="block font-medium">Age Proof</span>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">Birth Certificate, 10th Marksheet, Aadhaar</span>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white dark:bg-gray-800 p-3 rounded-xl border border-gray-100 dark:border-gray-600">
+                                <i class="fa-solid fa-home text-gray-400"></i>
+                                <div>
+                                    <span class="block font-medium">Address Proof</span>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">Passport, Utility Bill, Aadhaar</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voting Process -->
+        <section id="voting-process" class="py-16 transition-colors scroll-mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-12 text-center">The Voting Process</h2>
+                
+                <div class="grid md:grid-cols-4 gap-6 relative">
+                    <!-- Connecting line for desktop -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-blue-100 dark:bg-gray-700 -translate-y-1/2 z-0"></div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 relative z-10 hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 mx-auto shadow-lg">1</div>
+                        <h3 class="text-lg font-bold text-center mb-2">Visit Booth</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center">Go to your designated polling booth. Check your name in the voter list.</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 relative z-10 hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 mx-auto shadow-lg">2</div>
+                        <h3 class="text-lg font-bold text-center mb-2">ID Verification</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center">Show your Voter ID or alternative approved ID to the polling officer.</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 relative z-10 hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 mx-auto shadow-lg">3</div>
+                        <h3 class="text-lg font-bold text-center mb-2">Ink Marking</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center">An official will mark your index finger with indelible ink and take your signature.</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 relative z-10 hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 mx-auto shadow-lg">4</div>
+                        <h3 class="text-lg font-bold text-center mb-2">Cast Vote</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center">Press the blue button next to your candidate on the EVM. Check the VVPAT slip.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Grid: Polling Station, Calendar, Candidates -->
+        <section class="py-16 bg-gray-100 dark:bg-gray-800/50 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Polling Station Finder -->
+                    <div id="polling" class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-md border border-gray-200 dark:border-gray-700 col-span-1 md:col-span-2 lg:col-span-1 scroll-mt-16 transition-colors" id="polling-card">
+                        <h3 class="text-2xl font-bold mb-2">Polling Station</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Enter your area to find nearby polling locations on the map.</p>
+                        
+                        <div class="mb-4">
+                            <div class="flex gap-2">
+                                <input type="text" id="location-input" class="flex-1 rounded-lg border-gray-300 border px-4 py-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="e.g. Bandra, Mumbai">
+                                <button id="find-station-btn" class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"><i class="fa-solid fa-search"></i></button>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2"><i class="fa-solid fa-lightbulb text-yellow-500 mr-1"></i> Tip: You can find your exact polling station name on your voter slip.</p>
+                        </div>
+                        
+                        <!-- Map Iframe Container -->
+                        <div class="w-full h-64 bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-600 relative">
+                            <div id="map-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+                                <i class="fa-solid fa-map-location-dot text-4xl mb-2"></i>
+                                <span class="text-sm">Map will appear here</span>
+                            </div>
+                            <iframe id="map-iframe" class="w-full h-full hidden" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Candidates Info -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-md border border-gray-200 dark:border-gray-700 transition-colors" id="candidates-card">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-gray-700 text-primary rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-users"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Find Candidates</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">To view the official and most up-to-date list of candidates in your constituency, please visit the official Election Commission website.</p>
+                        
+                        <a href="https://eci.gov.in" target="_blank" class="w-full block text-center bg-white dark:bg-gray-800 border-2 border-primary text-primary hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white font-medium py-3 px-4 rounded-xl transition-colors">
+                            View Official Candidate List <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Calendar Reminder -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-gray-700 text-primary rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Election Reminder</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Never miss election day. Set a reminder in your Google Calendar so you remember to cast your vote.</p>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl mb-6 border border-gray-100 dark:border-gray-600">
+                            <div class="font-medium">Upcoming Sample Election</div>
+                            <div class="text-primary font-bold text-lg">May 1, 2026</div>
+                        </div>
+
+                        <a href="#" id="calendar-btn" target="_blank" class="w-full flex items-center justify-center gap-2 bg-gray-900 dark:bg-gray-100 dark:text-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-4 rounded-xl transition-colors">
+                            <i class="fa-brands fa-google"></i> Set Voting Reminder
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQs -->
+        <section id="faq" class="py-16 transition-colors">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-10 text-center">Frequently Asked Questions</h2>
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQs injected by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center gap-2 mb-4 md:mb-0">
+                    <i class="fa-solid fa-check-to-slot text-primary text-2xl"></i>
+                    <span class="font-bold text-2xl text-white">Election Guide</span>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <p class="text-sm">For educational purposes.</p>
+                    <button id="footer-share-btn" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full transition-colors border border-gray-700">
+                        <i class="fa-solid fa-share-nodes"></i> Share This Info
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating AI Chatbot -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Window (Hidden initially) -->
+        <div id="chatbot-window" class="hidden w-80 sm:w-96 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 mb-4 overflow-hidden flex-col h-[450px] transition-all transform origin-bottom-right scale-95 opacity-0">
+            <!-- Header -->
+            <div class="bg-primary text-white p-4 flex justify-between items-center shadow-sm">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-robot"></i>
+                    <span class="font-bold">Support Assistant</span>
+                </div>
+                <button id="close-chatbot" class="text-blue-200 hover:text-white transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <!-- Chat Area -->
+            <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50 dark:bg-gray-900 space-y-4 custom-scrollbar">
+                <!-- Greeting injected here -->
+            </div>
+
+            <!-- Quick Replies -->
+            <div class="px-4 pb-2 bg-gray-50 dark:bg-gray-900 flex flex-wrap gap-2">
+                <button class="chat-quick-btn text-xs bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-3 py-1.5 rounded-full hover:border-primary transition-colors">Am I eligible?</button>
+                <button class="chat-quick-btn text-xs bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-3 py-1.5 rounded-full hover:border-primary transition-colors">How to register?</button>
+                <button class="chat-quick-btn text-xs bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-3 py-1.5 rounded-full hover:border-primary transition-colors">Where to vote?</button>
+            </div>
+            
+            <!-- Input -->
+            <div class="p-3 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex gap-2">
+                <input type="text" id="chatbot-input" class="flex-1 border-none focus:ring-0 bg-gray-100 dark:bg-gray-700 rounded-full px-4 text-sm dark:text-white" placeholder="Type a keyword...">
+                <button id="chatbot-send" class="bg-primary text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"><i class="fa-solid fa-paper-plane text-xs"></i></button>
+            </div>
+        </div>
+
+        <!-- FAB Button -->
+        <button id="chatbot-fab" class="w-14 h-14 bg-primary text-white rounded-full shadow-xl flex items-center justify-center hover:bg-blue-700 transition-transform hover:scale-110 relative group">
+            <i class="fa-solid fa-comment-dots text-2xl"></i>
+            <!-- Tooltip -->
+            <span class="absolute right-16 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg pointer-events-none">Need help? Ask AI</span>
+        </button>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 translate-y-24 opacity-0 z-50 flex items-center gap-2">
+        <i class="fa-solid fa-info-circle text-primary"></i>
+        <span id="toast-msg">Notification</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

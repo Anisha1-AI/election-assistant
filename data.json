@@ -1,0 +1,73 @@
+{
+  "translations": {
+    "en": {
+      "navHome": "Home",
+      "navEligibility": "Eligibility",
+      "navRegistration": "Registration",
+      "navVoting": "Voting Process",
+      "navPolling": "Polling Station",
+      "heroTitle": "Election Guide Assistant",
+      "heroSubtitle": "Learn how elections work, check eligibility, and vote confidently",
+      "btnCheckEligibility": "Check Eligibility",
+      "btnExplore": "Explore Voting Process",
+      "btnShare": "Share This Info",
+      "whyVoteTitle": "Why Voting Matters",
+      "eligibilityTitle": "Check Your Eligibility",
+      "btnFindStation": "Find Polling Station"
+    },
+    "hi": {
+      "navHome": "मुख्य पृष्ठ",
+      "navEligibility": "पात्रता",
+      "navRegistration": "पंजीकरण",
+      "navVoting": "मतदान प्रक्रिया",
+      "navPolling": "मतदान केंद्र",
+      "heroTitle": "चुनाव गाइड सहायक",
+      "heroSubtitle": "जानें कि चुनाव कैसे काम करते हैं, अपनी पात्रता जांचें, और आत्मविश्वास से वोट करें",
+      "btnCheckEligibility": "पात्रता जांचें",
+      "btnExplore": "मतदान प्रक्रिया जानें",
+      "btnShare": "जानकारी साझा करें",
+      "whyVoteTitle": "मतदान क्यों महत्वपूर्ण है",
+      "eligibilityTitle": "अपनी पात्रता जांचें",
+      "btnFindStation": "मतदान केंद्र खोजें"
+    },
+    "bn": {
+      "navHome": "হোম",
+      "navEligibility": "যোগ্যতা",
+      "navRegistration": "নিবন্ধন",
+      "navVoting": "ভোট প্রক্রিয়া",
+      "navPolling": "ভোটকেন্দ্র",
+      "heroTitle": "নির্বাচন গাইড সহকারী",
+      "heroSubtitle": "নির্বাচন কীভাবে কাজ করে তা জানুন, যোগ্যতা পরীক্ষা করুন এবং আত্মবিশ্বাসের সাথে ভোট দিন",
+      "btnCheckEligibility": "যোগ্যতা যাচাই করুন",
+      "btnExplore": "ভোট প্রক্রিয়া জানুন",
+      "btnShare": "তথ্য শেয়ার করুন",
+      "whyVoteTitle": "ভোট দেওয়া কেন গুরুত্বপূর্ণ",
+      "eligibilityTitle": "আপনার যোগ্যতা যাচাই করুন",
+      "btnFindStation": "ভোটকেন্দ্র খুঁজুন"
+    }
+  },
+  "faqs": [
+    {
+      "question": "Who can vote in India?",
+      "answer": "Any Indian citizen aged 18 or above on the qualifying date (usually Jan 1st of the year) can vote, provided they are enrolled in the voter list."
+    },
+    {
+      "question": "What documents are required to register?",
+      "answer": "You need a recent passport-size photograph, an age proof (like Birth Certificate, Aadhaar, PAN), and an address proof (like Passport, Utility Bill)."
+    },
+    {
+      "question": "What if I lose my Voter ID card?",
+      "answer": "If you are on the electoral roll, you can still vote by showing alternative approved photo IDs like Aadhaar, PAN card, Driving License, or Passport."
+    }
+  ],
+  "chatbot": {
+    "greeting": "Hi! I'm your Election Assistant. How can I help you?",
+    "responses": {
+      "eligible": "To vote in India, you must be 18 years or older. You can check your eligibility in the section above!",
+      "register": "You can register to vote by filling out Form 6 online at the NVSP portal. Check the Registration section for details.",
+      "vote": "On election day, you need to verify your ID, get your finger inked, and cast your vote using the EVM. Read the full guide in the Voting Process section.",
+      "where": "You can find your polling station using the 'Find Polling Station' tool above. Just enter your location or check your voter slip."
+    },
+    "fallback": "I'm still learning! You can find most information by exploring the sections on this page. Try asking about eligibility, registration, or voting."
+  }
+}
