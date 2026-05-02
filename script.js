@@ -143,6 +143,10 @@ window.addEventListener('scroll', () => {
 // ==========================================
 // ELIGIBILITY CHECKER
 // ==========================================
+function checkEligibilityLogic(age) {
+    return age >= 18;
+}
+
 const ageInput = document.getElementById('age-input');
 const checkAgeBtn = document.getElementById('check-age-btn');
 const eligResult = document.getElementById('eligibility-result');
@@ -161,7 +165,7 @@ checkAgeBtn.addEventListener('click', () => {
     eligResult.classList.remove('hidden');
     resActions.innerHTML = ''; // Clear old buttons
 
-    if (age < 18) {
+    if (!checkEligibilityLogic(age)) {
         eligResult.className = "mt-8 text-center p-6 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 animate-fade-in";
         resIcon.innerHTML = '<i class="fa-solid fa-clock text-red-500"></i>';
         resTitle.innerText = "Not Eligible Yet";
@@ -408,4 +412,9 @@ document.querySelectorAll('.chat-quick-btn').forEach(btn => {
 
 function initChatbot() {
     // Already handled in FAB click, but guarantees data is loaded
+}
+
+// Export for Node.js testing
+if (typeof module !== "undefined") {
+    module.exports = { checkEligibilityLogic };
 }
