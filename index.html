@@ -170,18 +170,24 @@
                                 class="flex-1 rounded-lg border-gray-300 border px-4 py-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                                 min="0" max="120" placeholder="e.g. 18">
                             <button id="check-age-btn"
-                                class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Check</button>
+                                class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-transform hover:scale-105">Check</button>
                         </div>
                     </div>
 
                     <!-- Result Area -->
-                    <div id="eligibility-result" class="mt-8 hidden text-center p-6 rounded-2xl">
+                    <div id="eligibility-result" class="mt-8 hidden text-center p-6 rounded-2xl animate-fade-in">
                         <div id="result-icon" class="text-5xl mb-4"></div>
                         <h3 id="result-title" class="text-2xl font-bold mb-2"></h3>
                         <p id="result-desc" class="text-gray-600 dark:text-gray-300 mb-6"></p>
                         <div id="result-actions" class="flex justify-center gap-4">
                             <!-- Buttons injected dynamically -->
                         </div>
+                    </div>
+
+                    <!-- User Insights -->
+                    <div id="stats-card" class="mt-8 p-6 rounded-2xl bg-blue-50 dark:bg-gray-800 border border-blue-100 dark:border-gray-700 text-center animate-fade-in">
+                        <h3 class="text-xl font-bold mb-2">Community Insights</h3>
+                        <p id="stats-text" class="text-gray-600 dark:text-gray-300">Loading data...</p>
                     </div>
                 </div>
             </div>
@@ -467,6 +473,9 @@
 
             <!-- Input -->
             <div class="p-3 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex gap-2">
+                <button id="chatbot-mic" title="Voice Input"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors w-9 h-9 flex items-center justify-center rounded-full"><i
+                        class="fa-solid fa-microphone"></i></button>
                 <input type="text" id="chatbot-input"
                     class="flex-1 border-none focus:ring-0 bg-gray-100 dark:bg-gray-700 rounded-full px-4 text-sm dark:text-white"
                     placeholder="Type a keyword...">
@@ -500,6 +509,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getFirestore, addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDrJJfj-sfYZ6iHHf71cgjW7ZQ2PVziVqA",
@@ -513,6 +523,12 @@
 
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+        
+        window.db = db;
+        window.addDoc = addDoc;
+        window.collection = collection;
+        window.getDocs = getDocs;
     </script>
 </body>
 

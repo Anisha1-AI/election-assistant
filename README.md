@@ -1,146 +1,117 @@
 # 🗳️ Election Guide Assistant
 
-## 🚀 Live Demo
-
-https://election-assistant-732648848318.us-central1.run.app/
+## 🚀 Live Demo  
+🔗 https://election-assistant-732648848318.us-central1.run.app/
 
 ---
 
 ## 🌍 Problem Statement
 
-First-time voters in India often struggle with understanding eligibility, registration procedures, and the voting process. Information is scattered, complex, and not always accessible in regional languages, leading to confusion and reduced participation.
-
----
-
-## 🎯 Chosen Vertical
-
-**Civic Technology & Social Good** (Voter Education & Empowerment)
+First-time voters in India often face confusion around eligibility, registration, and the voting process. Information is scattered, complex, and not always available in regional languages, which reduces participation and awareness.
 
 ---
 
 ## 💡 Solution
 
-**Election Guide Assistant** is an AI-assisted civic-tech platform that simplifies voter education through an interactive, user-friendly interface. It provides step-by-step guidance, real-time assistance, and localized support to help users confidently participate in elections.
+**Election Guide Assistant** is an AI-powered civic-tech platform designed to simplify voter education. It provides:
+
+- Clear, step-by-step guidance  
+- Real-time AI assistance  
+- Multi-language support  
+- Interactive and intuitive UI  
+
+The goal is to make every voter confident and informed.
 
 ---
 
-## 🧠 Approach & Logic / How It Works
+## 🧠 How It Works
 
-1. **User Interaction**
-   Users interact via a clean, structured UI or through the floating assistant chatbot.
+1. **User Interaction**  
+   Users engage via a structured interface or a floating AI chatbot.
 
-2. **Logic Processing**
-   The system processes input using rule-based logic and dynamic `JSON` data to determine user needs (e.g., eligibility checking).
+2. **Hybrid Intelligence System**  
+   - Rule-based logic for reliability  
+   - Gemini AI for dynamic responses  
 
-3. **Guided Experience**
-   Interactive elements automatically scroll and highlight relevant sections, creating a seamless user journey.
+3. **Guided Navigation**  
+   Context-aware UI highlights relevant sections automatically.
 
-4. **Service Integration**
-   External Google services enhance functionality without requiring users to leave the platform.
+4. **Service Integration**  
+   Seamless integration with Google services enhances usability.
 
 ---
 
 ## 🚀 Key Features
 
-### 🤖 Smart Assistant
-
-* Floating chatbot for instant guidance
-* Keyword-based navigation to relevant sections
-* Helps users with eligibility, registration, and voting queries
+### 🤖 AI Smart Assistant
+- Gemini-powered real-time responses  
+- Context-aware conversation  
+- Fallback logic for reliability  
 
 ### ✅ Eligibility Checker
-
-* Dynamically checks voter eligibility
-* Guides users to the next step
+- Instant eligibility validation  
+- Personalized guidance  
 
 ### 🌐 Multi-Language Support
+- English 🇬🇧  
+- Hindi 🇮🇳  
+- Bengali 🇧🇩  
+- Dynamic UI translation  
 
-* English, Hindi, Bengali
-* Improves accessibility across regions
+### 🎤 Voice Interaction (NEW)
+- Voice input (Speech Recognition)  
+- Voice output (Text-to-Speech)  
 
 ### 🗺️ Polling Station Finder
-
-* Google Maps integration
-* Shows nearby polling stations
+- Google Maps integration  
+- Location-based results  
 
 ### ⏰ Voting Reminder
-
-* Google Calendar integration
-* One-click reminder setup
+- Google Calendar integration  
+- One-click reminders  
 
 ### 📢 Share Feature
+- Web Share API  
+- Easy awareness sharing  
 
-* Uses Web Share API
-* Promotes awareness easily
+---
+
+## 🤖 AI Integration
+
+- **Google Gemini API**
+  - Real-time conversational responses  
+  - Context-aware chat memory  
+  - Multi-language support  
+
+- **Fallback System**
+  - Ensures reliability when AI is unavailable  
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Frontend**: HTML5, Vanilla JavaScript
-* **Styling**: Tailwind CSS
-* **Data Handling**: JSON
-* **Icons**: FontAwesome
+- **Frontend:** HTML5, Vanilla JavaScript  
+- **Styling:** Tailwind CSS  
+- **Data:** JSON  
+- **AI:** Google Gemini API  
+- **Icons:** FontAwesome  
 
 ---
 
 ## ☁️ Google Services Used
 
-* **Google Cloud Run** → Deployment & hosting
-* **Firebase Analytics** → User interaction tracking
-* **Google Maps (Embed API)** → Polling station visualization
-* **Google Calendar** → Voting reminder integration
+- Firebase Analytics → User tracking  
+- Firebase Firestore → Interaction storage  
+- Google Cloud Run → Deployment  
+- Google Maps Embed API → Location services  
+- Google Calendar API → Reminder system  
 
 ---
 
 ## 🧪 Testing
 
-✔ Unit testing implemented using Node.js
-✔ Covers eligibility logic and edge cases
-
-Run tests using:
+- Unit testing using Node.js  
+- Covers eligibility logic and edge cases  
 
 ```bash
 npm test
-```
-
----
-
-## 🔮 Future Enhancements
-
-* AI-based candidate comparison system
-* Fake news detection
-* Constituency-level analytics
-* Backend integration with real-time datasets
-
----
-
-## ⚙️ How to Run Locally
-
-1. Clone the repository
-2. Ensure all files are in the same folder
-3. Run using a local server:
-
-```bash
-python -m http.server 8000
-```
-
-4. Open:
-
-```
-http://localhost:8000
-```
-
----
-
-## ⚠️ Assumptions
-
-* Election date is a placeholder
-* Google Maps uses iframe (no API key required)
-* Candidate data redirects to official ECI website
-
----
-
-## 👩‍💻 Author
-
-**Anisha Majumdar**
